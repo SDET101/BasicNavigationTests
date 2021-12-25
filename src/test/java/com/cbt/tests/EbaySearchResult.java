@@ -14,15 +14,20 @@ public class EbaySearchResult {
         click on search button
         print number of results
          */
-
+        
+        // Browser setup
         WebDriver driver = BrowserFactory.getDriver("chrome");
 
+        // Getting the source page
         driver.get("https://www.ebay.com/");
-
+        
+        // Search term
         String term = "apple";
 
+        // Find Searchbox and send values
         driver.findElement(By.id("gh-ac")).sendKeys(term);
 
+        // Find search button and click on it
         driver.findElement(By.xpath("//input[@value='Search']")).click();
 
         String result = driver.findElement(By.className("srp-controls__count-heading")).getText();
