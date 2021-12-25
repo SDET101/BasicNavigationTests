@@ -9,7 +9,7 @@ public class EbaySearchResult {
     public static void main(String[] args) {
 
         /*
-        Go to Ebay
+        Go to Ebay?
         enter search term
         click on search button
         print number of results
