@@ -10,9 +10,9 @@ public class EbaySearchResult {
 
         /*
         Go to Ebay
-enter search term
-click on search button
-print number of results
+        enter search term
+        click on search button
+        print number of results
          */
 
         WebDriver driver = BrowserFactory.getDriver("chrome");
