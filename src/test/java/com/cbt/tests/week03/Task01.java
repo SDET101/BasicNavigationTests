@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Task01 {
+public class Task01 extends Object {
 
     WebDriver driver;
 
@@ -27,7 +27,7 @@ public class Task01 {
 
     @AfterMethod
     public void tearDown() {
-       // driver.quit();
+        driver.quit();
     }
      /*
     Test case #1

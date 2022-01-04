@@ -6,7 +6,9 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -14,6 +16,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 public class AlertTest {
 
@@ -43,6 +46,7 @@ public class AlertTest {
     public void setUp(){
         driver = BrowserFactory.getDriver("chrome");
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
 
     @AfterMethod
@@ -51,31 +55,34 @@ public class AlertTest {
     }
 
     @Test (priority = 1)
-    public void alertButtonJS() throws InterruptedException {
+    public void alertButtonJS() {
         driver.get("https://chercher.tech/practice/explicit-wait-sample-selenium-webdriver");
 
         //click Click For JS Alert Button
         driver.findElement(By.cssSelector("#alert")).click();
-        Thread.sleep(5000);
+        WebDriverWait wait = new WebDriverWait(driver,20);
+        wait.until(ExpectedConditions.alertIsPresent());
         //switch to JS alert pop up
         Alert alert = driver.switchTo().alert();
-        Thread.sleep(2000);
+
         alert.accept();
 
     }
 
     @Test (priority = 2)
-    public void enableButton() throws InterruptedException {
+    public void enableButton() {
         driver.get("https://chercher.tech/practice/explicit-wait-sample-selenium-webdriver");
         driver.findElement(By.cssSelector("#enable-button")).click();
-        Thread.sleep(10000);
+        WebDriverWait wait = new WebDriverWait(driver,20);
+
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#disable")));
 
         Assert.assertTrue(driver.findElement(By.cssSelector("#disable")).isEnabled(), "verify the button is enabled");
 
     }
 
     @Test (priority = 3)
-    public void checkTotalPrice() throws InterruptedException {
+    public void checkTotalPrice() {
         driver.get("http://secure.smartbearsoftware.com/samples/testcomplete12/WebOrders/login.aspx");
         Login.login("Tester", "test", "ctl00_MainContent_username", "ctl00_MainContent_password",
                 "ctl00_MainContent_login_button", driver);
