@@ -22,7 +22,7 @@ public class Task02 {
 
     @AfterMethod
     public void tearDown() {
-         driver.quit();
+        //driver.quit();
     }
 
     /*
@@ -65,7 +65,7 @@ public class Task02 {
             emailTitle = driver.getTitle();
         }
 
-        List<WebElement> emailList = driver.findElements(By.xpath("//tbody[@id='schranka']/tr/td"));
+        List<WebElement> emailList = driver.findElements(By.xpath("//tbody[@id='schranka']/tr/td[@class='from']"));
         System.out.println(emailList.size());
         List<String> list = new ArrayList<>();
 
