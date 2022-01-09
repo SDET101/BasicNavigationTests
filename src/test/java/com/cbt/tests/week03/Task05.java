@@ -68,7 +68,7 @@ public class Task05 {
 
     /*
     Test case #11
-    Step 1. Go to “https://practice-cybertekschool.herokuapp.com”
+    Step 1. Go to “https://practice-cybertekschool.herokuapp.com"
     Step 3. And click on “Status Codes”.
     Step 4. Then click on “404”.
     Step 5. Verify that following message is displayed:

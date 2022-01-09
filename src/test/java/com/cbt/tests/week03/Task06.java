@@ -27,11 +27,14 @@ public class Task06 {
     }
 
     @DataProvider //(name = "data-provider")
-    public Object[][] dpMethod(){
-        return new Object[][] {{"200"}, {"301"}, {"404"}, {"500"}};
+    public Object[] dpMethod(){
+        return new Object[] {"200", "301", "404", "500"};
     }
+//          public Object[][] dpMethod(){
+//        return new Object[][] {{"200"}, {"301"}, {"404"}, {"500"}};
+//    }
 
-    @Test  (dataProvider = "dpMethod")  //(name = "data-provider")
+    @Test (dataProvider = "dpMethod")  //(name = "data-provider")
     public void test(String value){
         driver.findElement(By.linkText(value)).click();
         String text = driver.findElement(By.xpath("//h3/../p")).getText();
